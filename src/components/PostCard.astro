@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  slug: string;
+}
+
+const { title, description, pubDate, tags, slug } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="group">
+  <a href={`/blog/${slug}`} class="block no-underline">
+    <div class="p-6 -mx-6 rounded-2xl transition-colors hover:bg-surface-50 dark:hover:bg-surface-900/50">
+      <div class="flex items-center gap-3 mb-3">
+        <time
+          datetime={pubDate.toISOString()}
+          class="text-sm text-surface-500 dark:text-surface-400"
+        >
+          {formattedDate}
+        </time>
+        {tags.length > 0 && (
+          <span class="text-surface-300 dark:text-surface-600">·</span>
+        )}
+        <div class="flex gap-2 flex-wrap">
+          {tags.slice(0, 3).map((tag) => (
+            <a
+              href={`/tags/${tag}`}
+              class="text-xs font-medium px-2 py-0.5 rounded-full bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 no-underline transition-colors"
+            >
+              {tag}
+            </a>
+          ))}
+        </div>
+      </div>
+      <h3 class="text-xl font-serif font-bold text-surface-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
+        {title}
+      </h3>
+      <p class="text-surface-600 dark:text-surface-400 leading-relaxed">
+        {description}
+      </p>
+    </div>
+  </a>
+</article>
