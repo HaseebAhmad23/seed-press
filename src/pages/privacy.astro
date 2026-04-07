@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { contactEmail } from '../config/site';
+
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : 'https://haseebstudio.com';
+const lastUpdated = 'April 8, 2026';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How Haseeb Studio Blog collects, uses, and shares information, including for Google AdSense."
+>
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <h1 class="text-4xl md:text-5xl font-serif font-bold text-surface-900 dark:text-white mb-2">
+      Privacy Policy
+    </h1>
+    <p class="text-sm text-surface-500 dark:text-surface-400 mb-10">
+      Last updated: {lastUpdated}
+    </p>
+
+    <div class="prose text-surface-700 dark:text-surface-300">
+      <p>
+        This Privacy Policy describes how <strong>Haseeb Studio Blog</strong> (“we”, “us”) handles
+        information when you visit <a href={siteOrigin}>{siteOrigin.replace(/^https?:\/\//, '')}</a>
+        (the “Site”). By using the Site, you agree to this policy. If you do not agree, please do
+        not use the Site.
+      </p>
+
+      <h2>1. Information we collect</h2>
+      <p>We may process the following types of information:</p>
+      <ul>
+        <li>
+          <strong>Usage and technical data.</strong> Our hosting provider and infrastructure may log
+          data such as your IP address, browser type, device type, referring URL, pages viewed, and
+          timestamps. This helps operate, secure, and improve the Site.
+        </li>
+        <li>
+          <strong>Cookies and similar technologies.</strong> We and our partners may use cookies,
+          pixels, local storage, or similar technologies as described below.
+        </li>
+        <li>
+          <strong>Information you choose to send us.</strong> If you contact us by email or another
+          channel, we receive whatever you provide (for example, your email address and message
+          content).
+        </li>
+      </ul>
+
+      <h2>2. Google AdSense and advertising</h2>
+      <p>
+        We use <strong>Google AdSense</strong> to show advertisements on the Site. Google and its
+        partners may use cookies and similar technologies to deliver and measure ads, including
+        personalized ads based on your visits to this and other sites.
+      </p>
+      <p>
+        Google’s use of advertising cookies enables it and its partners to serve ads to you based on
+        your visits to the Site and/or other websites on the Internet. You can learn more about how
+        Google uses data when you use our partners’ sites or apps in
+        <a
+          href="https://policies.google.com/technologies/partner-sites"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Google’s Privacy &amp; Terms</a
+        >.
+      </p>
+      <p>
+        You may opt out of <strong>personalized advertising</strong> by visiting
+        <a href="https://www.google.com/settings/ads" rel="noopener noreferrer" target="_blank"
+          >Google Ads Settings</a
+        >. You can also visit
+        <a href="https://www.aboutads.info/choices/" rel="noopener noreferrer" target="_blank"
+          >aboutads.info</a
+        >
+        for additional choices about interest-based ads from participating companies.
+      </p>
+
+      <h2>3. Hosting and service providers</h2>
+      <p>
+        The Site is hosted and delivered through third-party services (for example, hosting and
+        deployment platforms). Those providers may process technical and log data on our behalf to
+        serve pages and protect the service. Their use of data is governed by their own policies.
+      </p>
+
+      <h2>4. How we use information</h2>
+      <p>We use the information described above to:</p>
+      <ul>
+        <li>Operate, maintain, and improve the Site</li>
+        <li>Measure traffic and understand how the Site is used</li>
+        <li>Display and measure advertising (including through Google AdSense)</li>
+        <li>Respond to inquiries and protect the security and integrity of the Site</li>
+      </ul>
+
+      <h2>5. Legal bases (EEA, UK, and similar regions)</h2>
+      <p>
+        Where required by law, we rely on appropriate legal bases such as: your consent (for example,
+        for certain cookies or ads where consent is required); our legitimate interests in running
+        and improving the Site and keeping it secure; and compliance with legal obligations.
+      </p>
+
+      <h2>6. Retention</h2>
+      <p>
+        We retain information only as long as needed for the purposes above or as required by law.
+        Log and analytics-type data may be kept for a limited period according to our providers’
+        settings and policies.
+      </p>
+
+      <h2>7. Your rights and choices</h2>
+      <p>
+        Depending on where you live, you may have rights to access, correct, delete, or restrict
+        certain processing of your personal data, or to object to processing or to data portability.
+        You may also have the right to lodge a complaint with a supervisory authority. To exercise
+        rights or ask questions, contact us using the details below. You can also use the ad opt-out
+        tools linked in the AdSense section above.
+      </p>
+
+      <h2>8. Children’s privacy</h2>
+      <p>
+        The Site is not directed at children under 16 (or the minimum age in your jurisdiction). We
+        do not knowingly collect personal information from children. If you believe we have done so,
+        please contact us and we will take appropriate steps.
+      </p>
+
+      <h2>9. International visitors</h2>
+      <p>
+        The Site may be accessed from countries other than where we operate. Your information may be
+        processed in countries where our providers operate, which may have different data protection
+        rules than your country.
+      </p>
+
+      <h2>10. Changes to this policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. We will post the updated version on this
+        page and revise the “Last updated” date above. Continued use of the Site after changes means
+        you accept the updated policy.
+      </p>
+
+      <h2>11. Contact</h2>
+      <p>
+        For privacy-related questions or requests, contact us at
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
