@@ -1,0 +1,32 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-surface-200 dark:border-surface-800 mt-20">
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-center md:text-left">
+        <p class="font-serif font-bold text-lg text-surface-900 dark:text-white">AI Blog</p>
+        <p class="text-sm text-surface-500 dark:text-surface-400 mt-1">
+          Thoughts, ideas, and stories — auto-published with AI.
+        </p>
+      </div>
+      <div class="flex items-center gap-6">
+        <a
+          href="/rss.xml"
+          class="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors"
+          aria-label="RSS Feed"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-surface-200 dark:border-surface-800 text-center">
+      <p class="text-sm text-surface-400 dark:text-surface-500">
+        &copy; {currentYear} AI Blog. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
