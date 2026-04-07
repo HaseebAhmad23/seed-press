@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
+---
+
+<BaseLayout
+  title="Blog"
+  description="All blog posts — thoughts on technology, AI, software development, and more."
+>
+  <section class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-4xl md:text-5xl font-serif font-bold text-surface-900 dark:text-white mb-4">
+      Blog
+    </h1>
+    <p class="text-lg text-surface-600 dark:text-surface-400 mb-8">
+      All posts, sorted by most recent.
+    </p>
+
+    {allTags.length > 0 && (
+      <div class="flex gap-2 flex-wrap mb-10">
+        {allTags.map((tag) => (
+          <a
+            href={`/tags/${tag}`}
+            class="text-sm font-medium px-3 py-1.5 rounded-full border border-surface-200 dark:border-surface-700 text-surface-600 dark:text-surface-400 hover:border-primary-300 hover:text-primary-600 dark:hover:border-primary-700 dark:hover:text-primary-400 no-underline transition-colors"
+          >
+            {tag}
+          </a>
+        ))}
+      </div>
+    )}
+
+    {posts.length === 0 ? (
+      <p class="text-surface-500 dark:text-surface-400 text-center py-16">
+        No posts yet. Send a WhatsApp message to get started!
+      </p>
+    ) : (
+      <div class="divide-y divide-surface-200 dark:divide-surface-800">
+        {posts.map((post) => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            tags={post.data.tags}
+            slug={post.id}
+          />
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
