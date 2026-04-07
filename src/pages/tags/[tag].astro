@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+
+  return allTags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((post) => post.data.tags.includes(tag))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`Posts tagged "${tag}"`}
+  description={`All blog posts tagged with "${tag}".`}
+>
+  <section class="max-w-4xl mx-auto px-6 py-12">
+    <div class="mb-8">
+      <a
+        href="/blog"
+        class="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 no-underline"
+      >
+        &larr; All posts
+      </a>
+    </div>
+    <h1 class="text-4xl font-serif font-bold text-surface-900 dark:text-white mb-2">
+      Tagged: <span class="text-primary-600 dark:text-primary-400">{tag}</span>
+    </h1>
+    <p class="text-surface-600 dark:text-surface-400 mb-10">
+      {posts.length} post{posts.length !== 1 ? 's' : ''} found.
+    </p>
+
+    <div class="divide-y divide-surface-200 dark:divide-surface-800">
+      {posts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          tags={post.data.tags}
+          slug={post.id}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
