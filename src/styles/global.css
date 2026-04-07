@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+
+  --color-surface-50: #f8fafc;
+  --color-surface-100: #f1f5f9;
+  --color-surface-200: #e2e8f0;
+  --color-surface-300: #cbd5e1;
+  --color-surface-400: #94a3b8;
+  --color-surface-500: #64748b;
+  --color-surface-600: #475569;
+  --color-surface-700: #334155;
+  --color-surface-800: #1e293b;
+  --color-surface-900: #0f172a;
+  --color-surface-950: #020617;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-surface-900 font-sans antialiased transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-surface-950 text-surface-100;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold tracking-tight;
+  }
+
+  a {
+    @apply text-primary-600 hover:text-primary-700 transition-colors;
+  }
+
+  .dark a {
+    @apply text-primary-400 hover:text-primary-300;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply max-w-none text-lg leading-relaxed;
+  }
+
+  .prose h1 {
+    @apply text-4xl mt-12 mb-6;
+  }
+
+  .prose h2 {
+    @apply text-3xl mt-10 mb-4;
+  }
+
+  .prose h3 {
+    @apply text-2xl mt-8 mb-3;
+  }
+
+  .prose p {
+    @apply mb-6;
+  }
+
+  .prose ul, .prose ol {
+    @apply mb-6 pl-6;
+  }
+
+  .prose ul {
+    @apply list-disc;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-primary-500 pl-6 italic my-6 text-surface-600;
+  }
+
+  .dark .prose blockquote {
+    @apply text-surface-400;
+  }
+
+  .prose pre {
+    @apply rounded-xl p-6 my-6 overflow-x-auto bg-surface-900 text-surface-100 text-base;
+  }
+
+  .dark .prose pre {
+    @apply bg-surface-800;
+  }
+
+  .prose code:not(pre code) {
+    @apply bg-surface-100 text-primary-700 px-1.5 py-0.5 rounded text-base font-mono;
+  }
+
+  .dark .prose code:not(pre code) {
+    @apply bg-surface-800 text-primary-300;
+  }
+
+  .prose img {
+    @apply rounded-xl my-8;
+  }
+
+  .prose hr {
+    @apply my-10 border-surface-200;
+  }
+
+  .dark .prose hr {
+    @apply border-surface-700;
+  }
+
+  .prose a {
+    @apply underline underline-offset-2 decoration-primary-300 hover:decoration-primary-500;
+  }
+
+  .prose strong {
+    @apply font-bold;
+  }
+}
