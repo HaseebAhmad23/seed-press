@@ -1,12 +1,12 @@
 ---
-title: "Welcome to AI Blog"
+title: "Welcome to Haseeb Studio Blog"
 description: "An introduction to this blog and the automated AI-powered workflow that publishes every post."
 pubDate: "2026-03-30"
 tags: ["meta", "ai", "automation"]
 draft: false
 ---
 
-Welcome to **AI Blog** — a blog where every post begins as a simple WhatsApp message and ends up as a fully-written, published article, all within about 60 seconds.
+Welcome to **Haseeb Studio Blog** — a blog where every post begins as a simple WhatsApp message and ends up as a fully-written, published article, all within about 60 seconds.
 
 ## The Idea
 
