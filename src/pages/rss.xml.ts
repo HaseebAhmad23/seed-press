@@ -7,7 +7,7 @@ export async function GET(context: APIContext) {
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   return rss({
-    title: 'AI Blog',
+    title: 'Haseeb Studio Blog',
     description: 'Thoughts, ideas, and stories — auto-published with AI.',
     site: context.site!,
     items: posts.map((post) => ({

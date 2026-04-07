@@ -1,4 +1,4 @@
-# AI Blog — Auto-Publishing Pipeline
+# Haseeb Studio Blog — Auto-Publishing Pipeline
 
 A personal blog powered by Astro, deployed on Vercel, with an automated pipeline that turns a WhatsApp message into a published blog post using AI.
 
@@ -240,7 +240,7 @@ draft: false
 ✅ Blog post published!
 
 Title: {{ $('Parse Message').item.json.topic }}
-URL: https://yourblog.com/blog/{{ $('Parse Message').item.json.slug }}
+URL: https://haseebstudio.com/blog/{{ $('Parse Message').item.json.slug }}
 
 The post will be live in about 60 seconds.
 ```
