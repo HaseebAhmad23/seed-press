@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
+import AdSense from '../components/AdSense.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -35,6 +36,7 @@ const pageTitle = title === 'Home' ? 'Haseeb Studio Blog' : `${title} | Haseeb S
       article={article}
       publishedDate={publishedDate}
     />
+    <AdSense />
     <script is:inline>
       (function() {
         const theme = localStorage.getItem('theme') ||

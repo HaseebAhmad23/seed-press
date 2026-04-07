@@ -1,4 +1,6 @@
 ---
+import { supportUrl, showAffiliateDisclosure } from '../config/monetization';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -11,7 +13,13 @@ const currentYear = new Date().getFullYear();
           Thoughts, ideas, and stories — auto-published with AI.
         </p>
       </div>
-      <div class="flex items-center gap-6">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <a
+          href="/privacy"
+          class="text-sm text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors no-underline"
+        >
+          Privacy
+        </a>
         <a
           href="/rss.xml"
           class="text-surface-500 hover:text-primary-600 dark:text-surface-400 dark:hover:text-primary-400 transition-colors"
@@ -23,7 +31,29 @@ const currentYear = new Date().getFullYear();
         </a>
       </div>
     </div>
-    <div class="mt-8 pt-6 border-t border-surface-200 dark:border-surface-800 text-center">
+    <div class="mt-8 pt-6 border-t border-surface-200 dark:border-surface-800 text-center space-y-3">
+      {
+        supportUrl && (
+          <p>
+            <a
+              href={supportUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+              class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 no-underline"
+            >
+              Support this site
+            </a>
+          </p>
+        )
+      }
+      {
+        showAffiliateDisclosure && (
+          <p class="text-xs text-surface-400 dark:text-surface-500 max-w-lg mx-auto leading-relaxed">
+            Some links on this site may be affiliate links. If you buy through them, I may earn a
+            commission at no extra cost to you.
+          </p>
+        )
+      }
       <p class="text-sm text-surface-400 dark:text-surface-500">
         &copy; {currentYear} Haseeb Studio Blog. All rights reserved.
       </p>
