@@ -328,6 +328,6 @@ ai-blog/
 | OpenAI API | ~$0.01–0.05 per post (GPT-4o-mini) |
 | Custom domain | ~$10–15/year |
 
-## License
+## Author
 
-MIT
+Haseeb Ahmad (Fullstack Developer)
