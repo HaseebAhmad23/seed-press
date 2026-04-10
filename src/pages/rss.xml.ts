@@ -8,7 +8,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: 'Haseeb Studio Blog',
-    description: 'Thoughts, ideas, and stories — auto-published with AI.',
+    description: 'Thoughts, ideas, and stories - published with n8n workflow.',
     site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
