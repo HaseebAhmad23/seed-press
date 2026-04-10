@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { contactEmail } from '../config/site';
+import { impressum } from '../config/impressum';
+
+const mailtoSubject = encodeURIComponent('Message from haseebstudio.com');
+const mailtoHref = `mailto:${contactEmail}?subject=${mailtoSubject}`;
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Haseeb Studio — questions, feedback, or collaboration ideas."
+>
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <h1 class="text-4xl md:text-5xl font-serif font-bold text-surface-900 dark:text-white mb-4">
+      Contact
+    </h1>
+    <p class="text-lg text-surface-600 dark:text-surface-400 mb-10 leading-relaxed">
+      Have a question, feedback, or an idea? Send an email — I read every message when I can.
+    </p>
+
+    <div
+      class="rounded-2xl border border-surface-200 dark:border-surface-700 bg-surface-50 dark:bg-surface-900/40 p-8 md:p-10"
+    >
+      <h2 class="font-serif text-xl font-bold text-surface-900 dark:text-white mb-6">Email</h2>
+      <p class="text-surface-700 dark:text-surface-300 mb-6">
+        The best way to reach me is by email:
+      </p>
+      <a
+        href={mailtoHref}
+        class="inline-flex items-center gap-2 text-lg font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 no-underline break-all"
+      >
+        <svg class="w-6 h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+          />
+        </svg>
+        {contactEmail}
+      </a>
+
+      {
+        impressum.phone && (
+          <>
+            <h2 class="font-serif text-xl font-bold text-surface-900 dark:text-white mt-10 mb-4">Phone</h2>
+            <p class="text-surface-700 dark:text-surface-300">
+              <a
+                href={`tel:${impressum.phone.replace(/\s/g, '')}`}
+                class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 no-underline"
+              >
+                {impressum.phone}
+              </a>
+            </p>
+          </>
+        )
+      }
+    </div>
+
+    <div class="prose text-surface-700 dark:text-surface-300 mt-10 text-base">
+      <p class="not-italic text-surface-600 dark:text-surface-400">
+        For legal or privacy-related requests, please see the{' '}
+        <a href="/privacy">Privacy Policy</a> and <a href="/impressum">Legal notice (Impressum)</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
