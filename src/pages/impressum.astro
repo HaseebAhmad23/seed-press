@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { impressum, isImpressumComplete } from '../config/impressum';
+import { impressum } from '../config/impressum';
 
 const lastUpdated = 'April 8, 2026';
-const complete = isImpressumComplete();
 ---
 
 <BaseLayout
@@ -14,28 +13,9 @@ const complete = isImpressumComplete();
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-surface-900 dark:text-white mb-2">
       Legal Notice <span class="text-surface-500 dark:text-surface-400 text-3xl md:text-4xl font-normal">(Impressum)</span>
     </h1>
-    <p class="text-sm text-surface-500 dark:text-surface-400 mb-6">
+    <p class="text-sm text-surface-500 dark:text-surface-400 mb-10">
       Last updated: {lastUpdated}
     </p>
-
-    {
-      !complete && (
-        <div
-          class="mb-8 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100"
-          role="status"
-        >
-          <strong>Note:</strong> Some details are still missing (name, address, or email). Set{' '}
-          <code class="rounded bg-amber-100/80 px-1 font-mono text-xs dark:bg-amber-900/50">
-            PUBLIC_IMPRESSUM_*
-          </code>{' '}
-          and{' '}
-          <code class="rounded bg-amber-100/80 px-1 font-mono text-xs dark:bg-amber-900/50">
-            PUBLIC_CONTACT_EMAIL
-          </code>{' '}
-          in your host’s environment variables and redeploy.
-        </div>
-      )
-    }
 
     <div class="prose text-surface-700 dark:text-surface-300">
       <p class="text-lg not-italic">
@@ -49,45 +29,30 @@ const complete = isImpressumComplete();
         (German Telemedia Act — <span lang="de">Telemediengesetz</span>)
       </p>
 
-      {
-        complete ? (
-          <>
-            <p>
-              <strong>{impressum.name}</strong>
-              <br />
-              {impressum.street}
-              <br />
-              {impressum.postalCode} {impressum.city}
-              <br />
-              {impressum.country}
-            </p>
-            {impressum.businessNote && (
-              <p>
-                <em>{impressum.businessNote}</em>
-              </p>
-            )}
-            {impressum.vatId && (
-              <p>
-                VAT identification number pursuant to Section 27a of the German VAT Act (UStG):{' '}
-                <strong>{impressum.vatId}</strong>
-              </p>
-            )}
-          </>
-        ) : (
-          <p class="text-surface-500 dark:text-surface-400">
-            [Name, street, postal code, and city — shown after configuration]
-          </p>
-        )
-      }
+      <p>
+        <strong>{impressum.name}</strong>
+        <br />
+        {impressum.street}
+        <br />
+        {impressum.postalCode} {impressum.city}
+        <br />
+        {impressum.country}
+      </p>
+      {impressum.businessNote && (
+        <p>
+          <em>{impressum.businessNote}</em>
+        </p>
+      )}
+      {impressum.vatId && (
+        <p>
+          VAT identification number pursuant to Section 27a of the German VAT Act (UStG):{' '}
+          <strong>{impressum.vatId}</strong>
+        </p>
+      )}
 
       <h2 class="font-serif text-2xl">Contact</h2>
       <p>
-        Email:{' '}
-        {impressum.email ? (
-          <a href={`mailto:${impressum.email}`}>{impressum.email}</a>
-        ) : (
-          <span class="text-surface-500 dark:text-surface-400">[PUBLIC_CONTACT_EMAIL]</span>
-        )}
+        Email: <a href={`mailto:${impressum.email}`}>{impressum.email}</a>
         {impressum.phone && (
           <>
             <br />
@@ -101,15 +66,9 @@ const complete = isImpressumComplete();
         (German Interstate Broadcasting Treaty — <span lang="de">Rundfunkstaatsvertrag</span>)
       </p>
       <p>
-        {complete ? (
-          <>
-            {impressum.name}
-            <br />
-            {impressum.street}, {impressum.postalCode} {impressum.city}
-          </>
-        ) : (
-          <span class="text-surface-500 dark:text-surface-400">[as above]</span>
-        )}
+        {impressum.name}
+        <br />
+        {impressum.street}, {impressum.postalCode} {impressum.city}
       </p>
 
       <h2 class="font-serif text-2xl">Liability for content</h2>

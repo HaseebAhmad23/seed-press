@@ -17,9 +17,3 @@ export const impressum = {
   /** Optional short line, e.g. Kleinunternehmer status */
   businessNote: import.meta.env.PUBLIC_IMPRESSUM_BUSINESS_NOTE?.trim() ?? '',
 } as const;
-
-export function isImpressumComplete(): boolean {
-  return Boolean(
-    impressum.name && impressum.street && impressum.postalCode && impressum.city && impressum.email,
-  );
-}
