@@ -1,55 +1,53 @@
 ---
-title: "AI Is Changing How We Write — And That's a Good Thing"
-description: "From autocomplete to full article generation, AI writing tools are transforming content creation. Here's why that's exciting, not scary."
+title: "I Let AI Draft My Posts — Here’s What Still Feels ‘Mine’"
+description: "The model doesn’t have my job stories, my bad deploys, or my taste. I use it anyway — just not the way the Twitter takes suggest."
 pubDate: "2026-03-28"
 tags: ["ai", "writing", "technology"]
 draft: false
+heroImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80"
 ---
 
-There's a common fear that AI will replace writers. But after using AI tools extensively for content creation, I've come to a different conclusion: **AI doesn't replace writers — it removes the blank page problem.**
+I’ll say the quiet part out loud: **I use AI to write parts of this blog.** Not because I can’t write — because some nights I have twenty minutes on my phone and a half-baked idea, and I’d rather ship something imperfect than bookmark it into oblivion.
 
-## The Blank Page Problem
+The internet wants two camps (“AI is theft” vs. “AI replaced writers”). Real life is messier.
 
-Ask any writer what the hardest part of writing is, and most won't say editing or research. They'll say *starting*. The blank page is intimidating. It represents infinite possibilities and, paradoxically, that's what makes it so hard.
+## What I mean by “blank page”
 
-AI fundamentally changes this dynamic. Instead of staring at a blank page, you start with a draft. It might not be perfect — it rarely is — but it's something. And editing something is infinitely easier than creating something from nothing.
+It’s not writer’s block in the romantic sense. It’s Tuesday at 11 p.m., you know the *point* you want to make, and you’re stuck on the first paragraph because your brain wants a runway.
 
-## From Idea to Draft in Seconds
+Here’s a prompt I actually sent last week (slightly cleaned up):
 
-The workflow I use for this blog is a perfect example. I send a topic like:
+> Topic: why I still read stack traces by hand  
+> Mention one production bug story, keep tone dry, no em dash spam, ~800 words
 
-> "Write about how AI is changing writing. Cover the blank page problem, the role of AI as a collaborator, and why human creativity still matters."
+What came back wasn’t publish-ready. It was **something to react to** — structure, a few phrases I hated (deleted), and one joke I’d never write (also deleted). That’s still useful.
 
-Within seconds, I have a structured, detailed first draft. I can publish it as-is, or I can edit it on GitHub — tweaking the voice, adding personal anecdotes, restructuring sections.
+<figure>
+  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" alt="Abstract representation of AI and technology" loading="lazy" width="1200" height="675" />
+  <figcaption>Tools change; the part where you decide what’s true for *you* doesn’t.</figcaption>
+</figure>
 
-## AI as a Collaborator
+## A tiny before/after (same idea, different hands)
 
-The best mental model for AI writing tools isn't "robot author." It's **collaborative partner**. Think of it like:
+**My rough note:**  
+“ai writing — not replacing people, more like compiler for prose, still need taste”
 
-- **Brainstorming partner**: Generates ideas and angles you might not have considered
-- **First draft machine**: Gets 80% of the way there instantly
-- **Structure assistant**: Organizes thoughts into a logical flow
-- **Research aid**: Surfaces relevant information and examples
+**What I’d publish without help:**  
+I’d spend 40 minutes circling the same three sentences.
 
-The human still provides the *what* and the *why*. The AI helps with the *how*.
+**What the model gives me first:**  
+A bland but organized essay with confident-sounding claims I have to fact-check and a few words I’d never say out loud (“delve,” “landscape,” “unlock”). Editing *that* is fast. It’s like pairing with an intern who never gets tired.
 
-## Why Human Creativity Still Matters
+## What I don’t let it fake
 
-AI can generate grammatically correct, well-structured content. But it can't:
+- **Stories from my job** — if it didn’t happen to me, it doesn’t go in as if it did  
+- **Strong opinions on people or products** — I’ll ask for outline only  
+- **Anything I’m not willing to defend in a PR comment**  
 
-- Share a personal experience that resonates
-- Have a genuinely unique perspective born from lived experience
-- Feel the emotional weight of a topic
-- Know your audience the way you do
+The model is great at fluency. It’s mediocre at *stakes*.
 
-The best AI-assisted content combines the efficiency of AI with the authenticity of human experience. That's where the magic happens.
+## Where this blog sits
 
-## The Future of Writing
+Some posts are mostly me. Some are me arguing with a draft. The through-line is I’m trying to **sound like a person** — irregular rhythm, specific examples, the occasional weird metaphor — because that’s what I like reading, too.
 
-I believe we're heading toward a world where:
-
-1. **Everyone can write** — AI lowers the skill barrier for clear communication
-2. **Ideas matter more than polish** — When everyone can produce polished text, original thinking becomes the differentiator
-3. **Writing becomes conversation** — Instead of solitary composition, writing becomes a dialogue between human intent and AI execution
-
-This blog is my experiment in that future. Every post starts as a few sentences from my phone and becomes something worth reading. That's the promise of AI-assisted writing, and we're just getting started.
+If you’re building something similar: use the robot for momentum, not for identity. The weird, specific bits are still on you.

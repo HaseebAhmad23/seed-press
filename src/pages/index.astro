@@ -20,8 +20,8 @@ const recentPosts = posts.slice(0, 5);
         <span class="text-primary-600 dark:text-primary-400">Haseeb Studio Blog</span>
       </h1>
       <p class="mt-6 text-xl text-surface-600 dark:text-surface-400 leading-relaxed">
-        Thoughts, ideas, and stories — written with the help of research, knowledge and deep analysis of the topics.
-        Exploring technology, creativity, and the world around us.
+        Notes on building things: automation, backends, tools that break at 2&nbsp;a.m., and whatever I’m
+        learning in public. Sometimes rough, usually specific.
       </p>
       <div class="mt-8 flex gap-4">
         <a
@@ -64,6 +64,7 @@ const recentPosts = posts.slice(0, 5);
             pubDate={post.data.pubDate}
             tags={post.data.tags}
             slug={post.id}
+            heroImage={post.data.heroImage}
           />
         ))}
       </div>

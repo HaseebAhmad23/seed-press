@@ -47,6 +47,7 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
             pubDate={post.data.pubDate}
             tags={post.data.tags}
             slug={post.id}
+            heroImage={post.data.heroImage}
           />
         ))}
       </div>

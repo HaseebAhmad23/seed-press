@@ -1,59 +1,79 @@
 ---
-title: "Building Automated Workflows with n8n"
-description: "A practical look at n8n, the open-source workflow automation tool, and how it powers this blog's auto-publishing pipeline."
+title: "I Replaced a Bunch of Cron Scripts with n8n (And Sleep Better)"
+description: "n8n looks like a toy until you’re debugging a 2 a.m. webhook. Here’s how I use it for real work — including this blog’s publish pipeline."
 pubDate: "2026-03-25"
 tags: ["automation", "n8n", "technology"]
 draft: false
+heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80"
 ---
 
-If you've ever wished you could connect different apps and services together without writing a ton of glue code, **n8n** is worth your attention. It's an open-source workflow automation platform that lets you build complex automations using a visual, node-based editor.
+A year ago my “automation stack” was a folder of Node scripts, a forgotten `crontab`, and prayers. Whenever something broke, I’d ssh in, read logs, and swear quietly.
 
-## What is n8n?
+**n8n** is the first tool in a long time that made me retire scripts without feeling like I’d given up control. It’s open source, you can self-host, and — crucially — you can *see* the data at each step instead of sprinkling `console.log` everywhere.
 
-Think of n8n as an open-source alternative to Zapier or Make.com. You create workflows by connecting nodes — each node represents a service or action. Data flows from one node to the next, getting transformed along the way.
+## The one-sentence pitch
 
-What makes n8n special:
+Visual pipelines: trigger → do thing → branch if error → Slack me so I don’t find out from a user.
 
-- **Open source**: Self-host it for free, or use their cloud offering
-- **400+ integrations**: WhatsApp, GitHub, OpenAI, Slack, Google Sheets, and many more
-- **Code when you need it**: Add JavaScript or Python nodes for custom logic
-- **Fair pricing**: The cloud free tier gives you 2,500 executions per month
+If you’ve used Zapier or Make, the mental model is the same. If you haven’t: imagine Lego, but each brick is “HTTP request” or “Postgres query.”
 
-## The Blog Publishing Workflow
+<figure>
+  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Analytics and workflow diagrams on a screen" loading="lazy" width="1200" height="675" />
+  <figcaption>I’m not showing my real workflow JSON — trade secrets and embarrassing node names — but this is the vibe.</figcaption>
+</figure>
 
-This blog uses an n8n workflow with five nodes:
+## Concrete example: this blog’s pipeline
 
-### 1. WhatsApp Trigger
-Listens for incoming WhatsApp messages via the WhatsApp Business Cloud API. When I send a message to my blog's number, this node fires.
+Roughly what my publish flow does (yours doesn’t need to match):
 
-### 2. Parse Message
-A code node that extracts the topic, any special instructions, and optional metadata (like tags) from the message text.
+| Step | What actually runs |
+|------|---------------------|
+| 1 | WhatsApp Business webhook receives my message |
+| 2 | Code node strips my shorthand (`tags: dev, rust`) into fields |
+| 3 | OpenAI node returns Markdown with YAML frontmatter |
+| 4 | GitHub creates/commits `src/content/blog/{slug}.md` |
+| 5 | WhatsApp replies with “live at …” so I know it worked |
 
-### 3. OpenAI — Generate Post
-Sends a prompt to GPT-4o with the topic and instructions. The prompt is carefully structured to output valid Markdown with proper YAML frontmatter.
+The part that used to hurt in bash? **Step 4** — parsing messy model output, escaping quotes, not committing garbage. In n8n I can pin the failing execution, copy the payload, and fix the prompt without redeploying a server.
 
-### 4. GitHub — Commit File
-Takes the generated Markdown and commits it to the blog's GitHub repository at `src/content/blog/`. The filename is auto-generated from the title.
+## Example: the “parse message” shape
 
-### 5. WhatsApp — Send Confirmation
-Sends a reply back to my WhatsApp with the URL of the published post.
+I’m not sharing my full prompt (it changes weekly), but the data object my code node expects looks roughly like this:
 
-## Why n8n Over Custom Code?
+```json
+{
+  "raw": "topic: n8n tips\n tone: casual\n tags: automation, n8n",
+  "topic": "n8n tips",
+  "tags": ["automation", "n8n"]
+}
+```
 
-I could have built this pipeline as a simple Node.js script. But n8n gives me:
+If `topic` is empty, I short-circuit and send myself an angry Telegram message instead of committing nonsense. Learned that the hard way.
 
-- **Visual debugging**: See exactly where data flows and where errors occur
-- **Easy iteration**: Drag and drop to add new steps (e.g., tweet the post, send to a newsletter)
-- **Error handling**: Built-in retry logic and error workflows
-- **No deployment hassle**: The cloud version handles hosting and uptime
+## Why not plain Node?
 
-## Getting Started
+I *could* ship a single Express app. For a long-running product I might still. But for glue code, n8n wins on:
 
-If you want to try n8n:
+- **Retries and error branches** without writing the same boilerplate again  
+- **Secrets UI** instead of `.env` drift across three machines  
+- **Non-engineer readability** when I show someone else what broke  
 
-1. Sign up for the [n8n Cloud free tier](https://n8n.io) — no credit card required
-2. Or self-host with Docker: `docker run -it --rm -p 5678:5678 n8nio/n8n`
-3. Start with a simple workflow (e.g., RSS feed to Slack notification)
-4. Build up from there
+## Try it in ten minutes
 
-Automation is one of those things that pays exponential dividends. The time you invest in setting up a workflow saves hours down the road. And with n8n, the setup itself is surprisingly fast.
+Cloud is fastest if you just want to play:
+
+1. Sign up at [n8n.io](https://n8n.io) — free tier exists  
+2. Build “Webhook → Set fields → HTTP Request → Slack”  
+3. Break it on purpose and watch the execution log  
+
+Self-hosting one-liner (good for homelab people):
+
+```bash
+docker run -it --rm -p 5678:5678 n8nio/n8n
+```
+
+Then open `http://localhost:5678` and click around.
+
+---
+
+Automation pays off in the boring moments: when a pipeline fails *loudly* at step three instead of silently for a week. n8n made those failures visible enough that I actually fix them.

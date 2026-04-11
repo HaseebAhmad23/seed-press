@@ -49,6 +49,7 @@ const { tag, posts } = Astro.props;
           pubDate={post.data.pubDate}
           tags={post.data.tags}
           slug={post.id}
+          heroImage={post.data.heroImage}
         />
       ))}
     </div>
