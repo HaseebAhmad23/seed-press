@@ -123,6 +123,18 @@
     @apply rounded-xl my-8;
   }
 
+  .prose figure {
+    @apply my-10;
+  }
+
+  .prose figure img {
+    @apply my-0 w-full;
+  }
+
+  .prose figcaption {
+    @apply text-center text-sm mt-3 text-surface-500 dark:text-surface-400 not-italic leading-snug;
+  }
+
   .prose hr {
     @apply my-10 border-surface-200;
   }

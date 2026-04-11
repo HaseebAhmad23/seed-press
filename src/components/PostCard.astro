@@ -5,9 +5,10 @@ interface Props {
   pubDate: Date;
   tags: string[];
   slug: string;
+  heroImage?: string;
 }
 
-const { title, description, pubDate, tags, slug } = Astro.props;
+const { title, description, pubDate, tags, slug, heroImage } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -19,6 +20,18 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 <article class="group">
   <a href={`/blog/${slug}`} class="block no-underline">
     <div class="p-6 -mx-6 rounded-2xl transition-colors hover:bg-surface-50 dark:hover:bg-surface-900/50">
+      {
+        heroImage && (
+          <img
+            src={heroImage}
+            alt=""
+            width="880"
+            height="495"
+            loading="lazy"
+            class="w-full aspect-[16/9] object-cover rounded-xl mb-4 ring-1 ring-surface-200/80 dark:ring-surface-700/80"
+          />
+        )
+      }
       <div class="flex items-center gap-3 mb-3">
         <time
           datetime={pubDate.toISOString()}
