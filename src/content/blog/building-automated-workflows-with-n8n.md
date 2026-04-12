@@ -4,7 +4,7 @@ description: "n8n looks like a toy until you’re debugging a 2 a.m. webhook. He
 pubDate: "2026-03-25"
 tags: ["automation", "n8n", "technology"]
 draft: false
-heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80"
+heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
 ---
 
 A year ago my “automation stack” was a folder of Node scripts, a forgotten `crontab`, and prayers. Whenever something broke, I’d ssh in, read logs, and swear quietly.
@@ -18,7 +18,7 @@ Visual pipelines: trigger → do thing → branch if error → Slack me so I don
 If you’ve used Zapier or Make, the mental model is the same. If you haven’t: imagine Lego, but each brick is “HTTP request” or “Postgres query.”
 
 <figure>
-  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Analytics and workflow diagrams on a screen" loading="lazy" width="1200" height="675" />
+  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Analytics and workflow diagrams on a screen" loading="lazy" width="1200" height="675" />
   <figcaption>I’m not showing my real workflow JSON — trade secrets and embarrassing node names — but this is the vibe.</figcaption>
 </figure>
 

@@ -4,7 +4,7 @@ description: "The model doesn’t have my job stories, my bad deploys, or my tas
 pubDate: "2026-03-28"
 tags: ["ai", "writing", "technology"]
 draft: false
-heroImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80"
+heroImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
 ---
 
 I’ll say the quiet part out loud: **I use AI to write parts of this blog.** Not because I can’t write — because some nights I have twenty minutes on my phone and a half-baked idea, and I’d rather ship something imperfect than bookmark it into oblivion.
@@ -23,7 +23,7 @@ Here’s a prompt I actually sent last week (slightly cleaned up):
 What came back wasn’t publish-ready. It was **something to react to** — structure, a few phrases I hated (deleted), and one joke I’d never write (also deleted). That’s still useful.
 
 <figure>
-  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" alt="Abstract representation of AI and technology" loading="lazy" width="1200" height="675" />
+  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="Abstract representation of AI and technology" loading="lazy" width="1200" height="675" />
   <figcaption>Tools change; the part where you decide what’s true for *you* doesn’t.</figcaption>
 </figure>
 
