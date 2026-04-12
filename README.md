@@ -1,5 +1,13 @@
 # Haseeb Studio Blog — Auto-Publishing Pipeline
 
+![Astro](https://img.shields.io/badge/Astro-Framework-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-Language-4162C4?style=for-the-badge&logo=typescript&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-Styling-41C4B0?style=for-the-badge&logo=css3&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-AI-C46F41?style=for-the-badge&logo=openai&logoColor=white)
+![n8n](https://img.shields.io/badge/n8n-Automation-EA4B71?style=for-the-badge&logo=n8n&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-Code-C4A341?style=for-the-badge&logo=github&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-Deployment-6241C4?style=for-the-badge&logo=vercel&logoColor=white)
+
 A personal blog powered by Astro, deployed on Vercel, with an automated pipeline that turns a WhatsApp message into a published blog post using AI.
 
 ## Architecture
