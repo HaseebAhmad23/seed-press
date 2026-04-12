@@ -34,6 +34,18 @@ Integration tests often spell assumptions the README forgot. Unit tests tell you
 
 Refactor. Rename for “clarity.” Suggest a new framework. **Earn** opinions after the map exists.
 
+## How I take notes without drowning
+
+One page per service: **entrypoint**, **main data stores**, **weirdest dependency**, **on-call runbook link**. If I can’t fill those four bullets in an hour, I’m still lost — and that’s useful information too.
+
+## When the README lies
+
+I trust runnable code over docs. If `docker compose up` fails on step two, I fix the compose or the README in the same week — otherwise the next new hire inherits the same lie. That’s team hygiene, not heroics.
+
+## “Jump to symbol” is not cheating
+
+Lean on LSP. The goal is **understanding behavior**, not proving you can scroll. I still read hot paths line by line; I don’t read every generated file by hand.
+
 ---
 
 Reading code is a skill separate from writing it. The trick is **directional** reading — always know which question you’re answering next.

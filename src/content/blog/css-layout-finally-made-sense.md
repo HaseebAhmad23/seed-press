@@ -48,6 +48,31 @@ Absolutely positioning everything “just for this one screen.” It always came
 
 `outline: 1px solid hotpink` on suspicious containers. **Never** `border` — it changes size and lies to you.
 
+## `gap` saved my flex sanity
+
+Before universal `gap`, I used negative margins and hacky selectors to space chips. Now `display: flex; gap: 0.5rem` is the default. If you’re on a codebase that still “can’t use gap,” check **which** browsers you actually support — you might be carrying 2016 constraints.
+
+## Grid areas for dashboards
+
+When I have a fixed dashboard skeleton, naming areas beats counting columns in my head:
+
+```css
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    "nav nav"
+    "side main";
+  grid-template-columns: 220px 1fr;
+}
+.sidebar { grid-area: side; }
+```
+
+Readable diffs when you move a panel — that’s worth the extra syntax.
+
+## When I still reach for `position: sticky`
+
+Table headers and section navs. Sticky isn’t evil; **abusing** sticky for whole-page layout is. Pair it with a sensible scroll parent or you’ll chase “why isn’t it sticking” for an hour.
+
 ---
 
 CSS isn’t random; it’s **ruthlessly logical** once you name which problem you’re solving. Flex or Grid — pick the dimension count and stop arm-wrestling float.

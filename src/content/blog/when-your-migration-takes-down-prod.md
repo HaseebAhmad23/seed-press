@@ -23,6 +23,19 @@ The migration **held an AccessExclusiveLock** longer than our connection pool ti
 
 The root cause wasn’t Postgres being evil — it was **everything else** touching that table at the same time: a long-running analytics query, a backfill job someone had left on, and our migration competing for the same lock queue.
 
+## Timeline (approximate, because memory is cruel)
+
+- **16:58** — migration starts, looks “instant” in psql.  
+- **17:02** — app pool starts waiting; p95 latency creeps.  
+- **17:08** — health checks red; someone says “maybe Cloudflare?” (it wasn’t).  
+- **17:25** — we kill the analytics session holding the line; locks drain; sweat cools.  
+
+The column was nullable. The **queue** wasn’t.
+
+## What we told the rest of the company
+
+Short version: “Planned change hit contention; we rolled forward by clearing a blocker job; no data loss.” Long version lived in the incident doc with query IDs and graphs. **Boring postmortems** age better than heroic stories.
+
 ## The boring fix that works
 
 1. Run migrations in a window you actually control (not “before the weekend”).  
@@ -47,6 +60,10 @@ ORDER BY query_start;
 ```
 
 Not revolutionary. Just **always** run it before touching a table that pays my salary.
+
+## Lock types I wish I’d memorized earlier
+
+You don’t need to quote the manual in standup, but knowing **`ACCESS EXCLUSIVE`** blocks almost everything — including `SELECT` — is the difference between “quick ALTER” and “why is the site down.” When in doubt, check the Postgres docs chart for your version; behavior does evolve slightly across releases.
 
 ---
 

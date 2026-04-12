@@ -47,6 +47,18 @@ Not clever. **Reliable.**
 
 Variables depend on your n8n expression syntax — point is **keep the template dumb**.
 
+## Plain text fallback
+
+Some clients mangle HTML. I send **multipart** mail when the provider allows: `text/plain` first with the same facts, HTML as the pretty layer. The CEO’s phone mail app from 2014 still exists in the wild.
+
+## Unsubscribe and lists
+
+Internal digests shouldn’t need CAN-SPAM footers, but labeling the list (“infra-weekly@…”) and having an owner matters. When the person who owned the cron leaves, someone should know **which** workflow to disable — otherwise you spam ex-employees forever.
+
+## Rate limits and retries
+
+SMTP providers throttle. I backoff retries in the workflow and log failures to Slack **once**, not fifty times for the same stuck send. Learned that after a provider soft-banned a dev key.
+
 ---
 
 Email isn’t sexy. **Delivered** beats sexy when finance asks “did we know about this spike?”

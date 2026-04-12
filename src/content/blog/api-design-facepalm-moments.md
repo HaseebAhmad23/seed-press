@@ -48,6 +48,18 @@ Prefer something **machine-friendly**:
 
 Clients can branch on `code`; humans still read `message`.
 
+## Idempotency keys (the feature I skip at my peril)
+
+POST that charges money or sends email should accept an **Idempotency-Key** header (or equivalent). Retries happen — networks lie. Document which operations are safe to repeat and what the second call returns.
+
+## Rate limits deserve a structured body too
+
+`429` with `Retry-After` is polite. JSON like `{ "retry_after_seconds": 30, "limit": 100, "window": "1m" }` saves integration partners from parsing headers differently across languages.
+
+## Deprecation that people actually see
+
+`Sunset` headers, changelog entries, and **email to integrators** beat a quiet field rename. I’ve been the angry consumer of an API that “versioned” by surprise; I try not to inflict that.
+
 ---
 
 Good APIs feel boring. **Exciting** APIs usually mean someone’s guessing.

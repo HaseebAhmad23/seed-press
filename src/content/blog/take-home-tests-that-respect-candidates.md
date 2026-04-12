@@ -38,6 +38,22 @@ Boring list. **Easy to grade fairly.**
 
 Senior roles where public code or a **paid** contract sample makes more sense — or a deep pair-programming session if bandwidth allows.
 
+## Feedback we try to give
+
+Even a few sentences — “tests were thin,” “error handling was strong” — beats silence. Not every company allows detailed feedback; when legal pushes back, I still send **process** feedback (“we loved X, we hired for Y this cycle”).
+
+## Bias checks we’re still learning
+
+- Same rubric for every candidate on the exercise.  
+- Avoid judging “culture fit” from hobby comments in the README.  
+- If someone needs accommodations (extra time, different stack), say yes when it doesn’t change what you’re measuring.  
+
+Imperfect list; still better than pretending hiring is purely meritocratic math.
+
+## Red flags candidates notice
+
+Vague briefs, moving goalposts after submission, ghosting for weeks. Your take-home is a **brand** touchpoint. The best engineers talk to each other.
+
 ---
 
 The best process is the one candidates still **respect** after they’re rejected. That’s how you keep your pipeline from becoming Twitter drama.

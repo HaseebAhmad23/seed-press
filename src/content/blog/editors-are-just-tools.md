@@ -33,6 +33,18 @@ Extensions for everything, decent Git UI, **low ceremony** when I’m context-sw
 
 Debate editors after you’ve **profiled** your slow query and **written** the test that would have caught the bug. Tools matter; **discipline** matters more.
 
+## Remote editing reality
+
+On a laggy SSH session, a heavy GUI might hurt more than `vim` over `mosh`. On a beefy laptop with a language server that caches well, VS Code wins for me. **Context switches** cost more than keystrokes — pick what matches the machine you’re on that day.
+
+## Settings I sync vs settings I don’t
+
+I sync keybindings and a short list of extensions. I **don’t** sync experimental toggles that broke a release once. Treat editor config like app config: version what matters, delete the rest.
+
+## JetBrains in one paragraph
+
+When the debugger understands Spring or Django magic better than a generic LSP, I’ll live inside IntelliJ for that project. I don’t need one editor religion — I need **one default** so I’m not reinstalling themes every Monday.
+
 ---
 
 Pick one, get good enough, stop optimizing the chair while the house is on fire.

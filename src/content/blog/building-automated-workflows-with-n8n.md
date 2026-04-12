@@ -50,6 +50,18 @@ I’m not sharing my full prompt (it changes weekly), but the data object my cod
 
 If `topic` is empty, I short-circuit and send myself an angry Telegram message instead of committing nonsense. Learned that the hard way.
 
+## How I debug when step 4 looks “fine”
+
+1. Open the execution, expand **every** node output — not the summary.  
+2. Copy JSON into a scratch file and diff against the last good run.  
+3. If GitHub returned 422, read the **body** — GitHub’s error messages are annoyingly precise once you scroll past the HTML panic.  
+
+Half my “n8n is broken” moments were **expired credentials** or a branch protection rule I forgot existed.
+
+## Credentials: treat them like milk
+
+Rotate API keys on a calendar reminder. Name them after the workflow (`n8n-blog-publish-prod`) so when you see one in the audit log you know what to revoke. I used to have three keys all labeled “automation” and it was a security *and* sanity problem.
+
 ## Why not plain Node?
 
 I *could* ship a single Express app. For a long-running product I might still. But for glue code, n8n wins on:
@@ -73,6 +85,14 @@ docker run -it --rm -p 5678:5678 n8nio/n8n
 ```
 
 Then open `http://localhost:5678` and click around.
+
+## When I wouldn’t use n8n
+
+- **Tight latency** sub-50ms paths where you need compiled code and profiling.  
+- **Heavy transformation** that’s really a product (ETL that should live in dbt or a data warehouse).  
+- **Secrets you can’t trust a third party with** — self-host fixes part of that; air-gapped doesn’t.  
+
+Use the right hammer. n8n is glue, not a database.
 
 ---
 
