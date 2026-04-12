@@ -46,8 +46,25 @@ A bland but organized essay with confident-sounding claims I have to fact-check 
 
 The model is great at fluency. It’s mediocre at *stakes*.
 
+## My editing pass (usually 15–25 minutes)
+
+1. **Fact pass** — numbers, library names, “this API does X” claims.  
+2. **Voice pass** — kill clichés, shorten sentences that sound like a keynote.  
+3. **Structure pass** — move the punchline up if I buried the lede.  
+4. **Link pass** — add one or two real references if I’m making a strong claim.  
+
+If I skip (1), I deserve the comment that corrects me in public. That’s the deal.
+
+## What I tell junior devs who are embarrassed to use AI
+
+Using a model doesn’t make you less of an engineer any more than using Stack Overflow did. **Hiding** that you didn’t read the output does. Own the tool, read the diff, keep your name on the byline.
+
 ## Where this blog sits
 
 Some posts are mostly me. Some are me arguing with a draft. The through-line is I’m trying to **sound like a person** — irregular rhythm, specific examples, the occasional weird metaphor — because that’s what I like reading, too.
 
 If you’re building something similar: use the robot for momentum, not for identity. The weird, specific bits are still on you.
+
+## A prompt pattern that keeps tone less “AI”
+
+I almost always add constraints like: *no em dash spam*, *one concrete example*, *assume the reader has shipped production bugs*. Those lines cost nothing in tokens and save a lot of eye-rolling on read-through. Vague prompts get vague essays — that isn’t the model being dumb; it’s me being lazy.

@@ -41,6 +41,23 @@ Squash locally or on merge, I don’t care — but I stop dumping “address rev
 
 Deleting merged branches. My local repo is a graveyard. If you have a one-liner you swear by, I’m listening.
 
+## Aliases that survived my dotfile purge
+
+```bash
+git config --global alias.lg "log --oneline --graph --decorate -20"
+git config --global alias.unstage "reset HEAD --"
+```
+
+`git lg` is the only “pretty log” I need day to day. Everything fancier I forget under stress.
+
+## When the team standard disagrees with my prefs
+
+On `main`, I follow house rules — merge commits, squash merges, whatever ships. On **my** feature branch, I rebase to keep review readable. Fighting about git theology in PR comments is never the highest-value argument in the room.
+
+## `git bisect` paid for itself once
+
+Binary search between good and bad commit found a regression in **six** checkouts instead of me guessing across two weeks of history. I don’t bisect weekly, but when production is weird and tests are green, it’s the adult in the room.
+
 ---
 
 None of this needs a conference talk. It’s the **boring** stuff that keeps a team from hating the repo — which might be the whole point.

@@ -40,6 +40,26 @@ Not clever. **Boring** is the feature.
 
 Edge case: a user in a timezone half the team forgot existed. We fixed it with an explicit test and a comment that names the TZ rule. **Still** smaller than keeping the whole library “just in case.”
 
+## `Intl` example we actually ship (simplified)
+
+```ts
+const fmt = new Intl.DateTimeFormat("de-DE", {
+  dateStyle: "medium",
+  timeStyle: "short",
+});
+fmt.format(new Date());
+```
+
+No dependency, browser and Node both speak it, and when we add locales we’re not importing half of someone else’s calendar math.
+
+## How we sold the removal in code review
+
+I opened the PR with: grep counts, bundle diff screenshot, and **risk notes** (“we might need ICU edge cases — here’s the test plan”). Reviewers fear removal less when you show you already did the archaeology.
+
+## Dependency audit rhythm
+
+Once a quarter I run a dead-import pass and check **why** each top-level dependency exists. Not to delete everything — to prevent the next “we have it because we had it” library.
+
 ---
 
 Removing code is scarier than adding it. The trick is **proving** what you actually use — grep doesn’t lie, wishful thinking does.

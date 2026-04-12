@@ -51,6 +51,18 @@ Worth it **for this job** — heavy IO, predictable schema, needs to run on a se
 
 Not worth it for **one-off glue** I’ll delete next week. Rust shines when the problem is boring and the stakes are “we run this every night.”
 
+## Packaging and deploy
+
+`cargo build --release` gave us a binary we could drop on a VM without installing a runtime. CI cached dependencies after the first slow build. Document the **glibc** version you linked against if you move machines — “works on my laptop” dies quietly in prod.
+
+## Testing strategy
+
+Unit tests for parsing edge cases; a **golden file** test for “this sample log produces this CSV.” Rust’s test runner is nothing fancy, but fast tests meant I actually ran them before each tweak.
+
+## When I’d pick Go instead
+
+If the team already standardizes on Go, or if compile times for our crate graph grew painful, I’d be honest about switching horses. Rust isn’t magic — it’s a trade I liked **for this workload**.
+
 ---
 
 I still write Python most days. Rust is the tool I reach for when “fast enough” stopped being true.

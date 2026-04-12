@@ -29,6 +29,18 @@ CSS edge cases. Regex. Obscure webpack errors. I’m not claiming I’m **faster
 
 Before opening a purple link, I spend **10 minutes** with the doc page I’ve been avoiding. If I’m still stuck, SO is back on the menu — **after** I can phrase a sharp question.
 
+## What I didn’t ban
+
+Company internal wikis, issue trackers, and **reading the error message** (embarrassingly effective). The block was specifically the “instant answer” site so I’d stop skipping first principles.
+
+## A question that still stumped me
+
+Webpack + an old loader + Node 20. I burned three hours, unblocked with a well-written GitHub issue comment, not a SO post. **The lesson wasn’t “SO bad”** — it was “primary sources beat random snippets.”
+
+## Would I do a full month?
+
+Probably not alongside a product deadline. The week was a **reset**, not a lifestyle. If you try it, pick a stretch where slipping a day won’t torpedo a release.
+
 ---
 
 Stack Overflow is a tool, not a crutch — unless you never read the answers. The experiment was really about **attention**, not purity.

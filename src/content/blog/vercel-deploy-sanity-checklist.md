@@ -21,6 +21,18 @@ I’ve shipped enough static sites to know: **the build passing** and **the site
 - Hit `/rss.xml` and `/sitemap-index.xml` (or your generator’s paths).  
 - Share link in Slack/Discord once — **unfurl** image and title look human.
 
+## Preview vs Production: same brain, two configs
+
+I mirror critical `PUBLIC_*` vars to **Preview** when stakeholders click preview URLs. Nothing humbles you like “works on prod, blank on preview” because only prod had `PUBLIC_ADSENSE_CLIENT_ID` or similar. If a var is optional, document that in the README so the next person doesn’t assume malice.
+
+## Headers worth a second look
+
+- **`Strict-Transport-Security`** if you’re serious about HTTPS.  
+- **`X-Content-Type-Options: nosniff`** — cheap hardening.  
+- **CSP** — start strict in staging; loosen only with a reason in the commit message.  
+
+Framework adapters often set some of this; don’t assume without checking.
+
 ## Real mistake I made twice
 
 Forgot to set `PUBLIC_CONTACT_EMAIL` on Preview. Impressum page showed the default placeholder in a stakeholder demo. **Not** a career highlight.
@@ -37,6 +49,10 @@ curl -sI https://yourdomain.com | head -n 5
 ```
 
 Checks TLS + redirect chain in five seconds. Boring. **Useful.**
+
+## 404s and trailing slashes
+
+Static hosts disagree on `/about` vs `/about/`. Pick one story, configure redirects, and test **both** in the browser. SEO tools love to complain about duplicate content over a slash.
 
 ---
 

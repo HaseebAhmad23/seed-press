@@ -38,6 +38,30 @@ Same message, three different code paths. Which one? Good question.
 
 Suddenly grep becomes **jq**, and dashboards become possible without a séance.
 
+## What we deliberately don’t log
+
+- Raw passwords, tokens, full credit card numbers — **ever**.  
+- Entire request bodies on high-traffic endpoints — sampling exists for a reason.  
+- Personal data we can’t justify under our retention policy — legal beats debugging.  
+
+If you’re not sure, ask security *before* you add the field. Retroactive log scrubbing is not a fun weekend.
+
+## Tracing across two services (minimal version)
+
+Service A generates `request_id` and sends it in a header. Service B copies it into **every** log line for that request. That’s not full OpenTelemetry — it’s **80% of the win** for correlating “frontend said X” with “worker did Y.”
+
+## `jq` one-liners I actually run
+
+```bash
+# last 50 errors with request_id
+grep '"level":"error"' app.log | tail -50 | jq -c '{msg, request_id, error_code}'
+
+# count by error_code
+grep '"level":"error"' app.log | jq -r .error_code | sort | uniq -c | sort -rn
+```
+
+Ugly? Sure. Faster than clicking through three dashboards when prod is loud.
+
 <figure>
   <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80" alt="Team reviewing data on laptop" loading="lazy" width="1200" height="675" />
   <figcaption>Good logs are a gift to the person on call — who is often you.</figcaption>
@@ -46,6 +70,15 @@ Suddenly grep becomes **jq**, and dashboards become possible without a séance.
 ## The habit that stuck
 
 When I add a new error branch, I **name the event** like an analytics event: `oauth_token_expired`, not `Error: something went wrong`. Future me sends thanks.
+
+## Log levels I try not to argue about
+
+- **error** — needs human attention or breaks a user journey.  
+- **warn** — degraded but handled; might become an error soon.  
+- **info** — lifecycle events you’ll grep monthly.  
+- **debug** — only in dev or short-lived troubleshooting.  
+
+Teams disagree on the middle two; picking *something* consistent beats perfect taxonomy.
 
 ---
 
