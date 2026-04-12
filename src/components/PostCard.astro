@@ -15,50 +15,61 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
+const postHref = `/blog/${slug}`;
 ---
 
-<article class="group">
-  <a href={`/blog/${slug}`} class="block no-underline">
-    <div class="p-6 -mx-6 rounded-2xl transition-colors hover:bg-surface-50 dark:hover:bg-surface-900/50">
+<article class="group relative">
+  <div
+    class="relative z-[2] pointer-events-none p-6 -mx-6 rounded-2xl transition-colors group-hover:bg-surface-50 dark:group-hover:bg-surface-900/50"
+  >
+    {
+      heroImage && (
+        <img
+          src={heroImage}
+          alt=""
+          width="880"
+          height="495"
+          loading="lazy"
+          class="w-full aspect-[16/9] object-cover rounded-xl mb-4 ring-1 ring-surface-200/80 dark:ring-surface-700/80"
+        />
+      )
+    }
+    <div class="mb-3 flex items-center gap-3 flex-wrap">
+      <time
+        datetime={pubDate.toISOString()}
+        class="text-sm text-surface-500 dark:text-surface-400"
+      >
+        {formattedDate}
+      </time>
       {
-        heroImage && (
-          <img
-            src={heroImage}
-            alt=""
-            width="880"
-            height="495"
-            loading="lazy"
-            class="w-full aspect-[16/9] object-cover rounded-xl mb-4 ring-1 ring-surface-200/80 dark:ring-surface-700/80"
-          />
+        tags.length > 0 && (
+          <>
+            <span class="text-surface-300 dark:text-surface-600">·</span>
+            <div class="inline-flex flex-wrap gap-2 pointer-events-auto">
+              {tags.slice(0, 3).map((tag) => (
+                <a
+                  href={`/tags/${tag}`}
+                  class="text-xs font-medium px-2 py-0.5 rounded-full bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 no-underline transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </>
         )
       }
-      <div class="flex items-center gap-3 mb-3">
-        <time
-          datetime={pubDate.toISOString()}
-          class="text-sm text-surface-500 dark:text-surface-400"
-        >
-          {formattedDate}
-        </time>
-        {tags.length > 0 && (
-          <span class="text-surface-300 dark:text-surface-600">·</span>
-        )}
-        <div class="flex gap-2 flex-wrap">
-          {tags.slice(0, 3).map((tag) => (
-            <a
-              href={`/tags/${tag}`}
-              class="text-xs font-medium px-2 py-0.5 rounded-full bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 no-underline transition-colors"
-            >
-              {tag}
-            </a>
-          ))}
-        </div>
-      </div>
-      <h3 class="text-xl font-serif font-bold text-surface-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
-        {title}
-      </h3>
-      <p class="text-surface-600 dark:text-surface-400 leading-relaxed">
-        {description}
-      </p>
     </div>
-  </a>
+    <h3 class="text-xl font-serif font-bold text-surface-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
+      {title}
+    </h3>
+    <p class="text-surface-600 dark:text-surface-400 leading-relaxed">
+      {description}
+    </p>
+  </div>
+  <a
+    href={postHref}
+    class="absolute inset-0 z-[1] rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-surface-950"
+    aria-label={`Read article: ${title}`}
+  />
 </article>
