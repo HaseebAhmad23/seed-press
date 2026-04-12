@@ -4,7 +4,7 @@ description: "I got tired of never publishing. So I wired WhatsApp → n8n → G
 pubDate: "2026-03-30"
 tags: ["meta", "ai", "automation"]
 draft: false
-heroImage: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&q=80"
+heroImage: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
 ---
 
 Last month I caught myself doing the thing I always do: I had three half-finished drafts in Notion and zero posts live. Not because I had nothing to say — I just couldn’t be bothered to open a laptop, pick a title, and “be a blogger” for an hour.
@@ -31,7 +31,7 @@ About a minute later the post existed in my repo. That’s when I knew the setup
 The slow part isn’t the AI — it’s usually me deciding *what* to send. The pipeline itself is routinely done in under a minute.
 
 <figure>
-  <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80" alt="Developers collaborating at a desk with laptops" loading="lazy" width="1200" height="675" />
+  <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80" alt="Developers collaborating at a desk with laptops" loading="lazy" width="1200" height="675" />
   <figcaption>Most of the “work” is still just deciding what you care enough to ship.</figcaption>
 </figure>
 
