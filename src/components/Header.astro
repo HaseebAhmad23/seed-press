@@ -12,28 +12,32 @@ const navLinks = [
 ---
 
 <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-surface-950/80 border-b border-surface-200 dark:border-surface-800">
-  <nav class="max-w-4xl mx-auto px-6 py-2.5 flex items-center justify-between">
+  <nav
+    class="max-w-4xl mx-auto flex flex-col gap-3 px-4 py-2.5 sm:px-6 md:flex-row md:items-center md:justify-between md:gap-4"
+  >
     <a
       href="/"
-      class="flex items-center gap-3.5 text-xl font-serif font-bold text-surface-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 no-underline"
+      class="flex min-w-0 shrink-0 items-center gap-2.5 text-lg font-serif font-bold text-surface-900 no-underline hover:text-primary-600 dark:text-white dark:hover:text-primary-400 md:gap-3.5 md:text-xl"
     >
       <img
         src="/light_logo.png"
         alt=""
         width="730"
         height="755"
-        class="h-10 w-auto sm:h-11 object-contain object-left shrink-0"
+        class="h-9 w-auto shrink-0 object-contain object-left md:h-11"
         aria-hidden="true"
       />
-      <span>Haseeb Studio</span>
+      <span class="min-w-0 truncate">Haseeb Studio</span>
     </a>
 
-    <div class="flex items-center gap-1">
+    <div
+      class="flex min-w-0 w-full flex-wrap items-center gap-x-0.5 gap-y-2 sm:gap-x-1 md:w-auto md:flex-nowrap md:justify-end"
+    >
       {navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            'px-3 py-2 rounded-lg text-sm font-medium transition-colors no-underline',
+            'px-2 py-2 rounded-lg text-sm font-medium transition-colors no-underline md:px-3',
             pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
               ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300'
               : 'text-surface-600 hover:text-surface-900 hover:bg-surface-100 dark:text-surface-400 dark:hover:text-white dark:hover:bg-surface-800',
@@ -42,7 +46,7 @@ const navLinks = [
           {link.label}
         </a>
       ))}
-      <div class="ml-2">
+      <div class="ml-auto shrink-0 pl-1 md:pl-2">
         <ThemeToggle />
       </div>
     </div>
