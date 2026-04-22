@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.haseebstudio.com" }],
+      "destination": "https://haseebstudio.com/:path*",
+      "permanent": true
+    }
+  ]
+}
