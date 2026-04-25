@@ -5,7 +5,7 @@ import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://haseebstudio.com',
+  site: 'https://www.haseebstudio.com',
   vite: {
     plugins: [tailwindcss()],
   },
