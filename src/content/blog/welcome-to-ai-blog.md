@@ -1,70 +1,82 @@
 ---
-title: "How I Stopped Procrastinating on My Own Blog"
-description: "I got tired of never publishing. So I wired WhatsApp → n8n → GitHub and made posting as easy as texting a friend."
+title: "Why I’m Writing This Blog (And What You’ll Find Here)"
+description: "A short manifesto: practical engineering notes, real mistakes, no hype. Here’s what to expect and how I write."
 pubDate: "2026-03-30"
-tags: ["meta", "ai", "automation"]
+tags: ["meta", "writing"]
 draft: false
 heroImage: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
 ---
 
-Last month I caught myself doing the thing I always do: I had three half-finished drafts in Notion and zero posts live. Not because I had nothing to say — I just couldn’t be bothered to open a laptop, pick a title, and “be a blogger” for an hour.
+Most engineering blogs I bookmark fall into one of two camps. The first is content marketing dressed as tutorials — "How we scaled X to 10M users" where the real story is a vendor logo at the bottom. The second is hot takes from people who haven’t shipped anything in five years. I wanted a third option: a place to write down the specific, boring, hard-won things I learn while doing the actual job.
 
-So I did something a bit ridiculous: **I made publishing as lazy as sending a voice note.**
+This first post is the closest thing I’ll write to a manifesto. After this, posts get specific.
 
-## The actual message I sent first
+## What this blog is
 
-I didn’t start with a manifesto. I literally typed this into WhatsApp (typos and all):
+Practical engineering notes. Most pieces cover one of:
 
-> Topic: why I never finish blog posts  
-> Keep it short, a bit self-deprecating, mention n8n and Vercel but don’t sound like a press release
+- **Backend and databases** — Postgres, schema decisions, locks, migrations, query plans
+- **Devops and deployment** — CI/CD pipelines, env vars, redirects, monitoring
+- **API design** — versioning, error shapes, pagination, idempotency keys
+- **Workflow and tooling** — Git habits, code review, editor setup
+- **The job itself** — hiring, take-homes, learning new codebases
 
-About a minute later the post existed in my repo. That’s when I knew the setup wasn’t just a toy.
+Each post is short enough to read on a coffee break but long enough to teach something concrete. The aim is "I’ll forward this to a colleague who hit the same problem."
 
-## What happens under the hood (no buzzwords version)
+## What this blog is not
 
-1. WhatsApp fires a webhook when I message my “blog” number  
-2. **n8n** grabs the text, cleans it up, and builds a prompt  
-3. **OpenAI** returns Markdown + frontmatter (title, description, tags)  
-4. A **GitHub** node commits `src/content/blog/some-slug.md`  
-5. **Vercel** sees the push and rebuilds the static site  
+- Listicles. ("10 React Hooks You Won’t Believe Exist.")
+- Posts written to rank in search without saying anything new.
+- Generic "tech is amazing" think pieces.
+- Reviews of frameworks I haven’t shipped to production with.
 
-The slow part isn’t the AI — it’s usually me deciding *what* to send. The pipeline itself is routinely done in under a minute.
+If I can’t add a specific story, query, error message, or decision I regret, I don’t publish.
 
-## What actually breaks (so you’re not surprised)
+## How I decide what to write
 
-- **GitHub token scopes** — fine-grained tokens love to expire the day you’re demoing.  
-- **Model drift** — a prompt that worked in March suddenly adds smart quotes in YAML and your build screams.  
-- **Slug collisions** — two posts titled “Notes on Postgres” in one week teach you to enforce unique filenames.  
+Three filters, in order:
 
-I keep a **manual escape hatch**: I can still drop a `.md` file in the repo like a normal person. Automation is optional; the site is not.
+1. **Did I learn this the hard way?** If the answer is "yes, and I’m still annoyed," it’s usually a good topic. Pain is specific; specific is useful.
+2. **Can I name the smallest example that teaches the lesson?** A 50-line snippet beats a 500-line architecture diagram for most posts.
+3. **Would I have read this two years ago?** If past-me wouldn’t have clicked, present-me probably shouldn’t write it.
 
-## Rough costs, because people always ask
+The Postgres migration that took down a Friday deploy? That clears all three. A post titled "Why Postgres is good"? It doesn’t.
 
-WhatsApp Business and hosting aside, the recurring bit is API usage. For short posts it’s cents per run. For “write me 3k words with citations” it adds up fast — so I keep prompts honest about length. The expensive part of my stack is still **my time** reading the output before it ships.
+## What you can expect from a typical post
 
-<figure>
-  <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80" alt="Developers collaborating at a desk with laptops" loading="lazy" width="1200" height="675" />
-  <figcaption>Most of the “work” is still just deciding what you care enough to ship.</figcaption>
-</figure>
+Most posts here follow the same loose shape because it’s the shape my own notes take:
 
-## Why I didn’t use Medium
+- **A short story** — what I was trying to do, what went wrong
+- **The fix** — the actual change, with code or commands you could paste
+- **Why it works** — one or two paragraphs, no more than necessary
+- **What I’d do differently next time** — usually the most useful part
 
-I’ve nothing against Medium, but I wanted:
+I try to keep code examples runnable or at least readable. When I have to skip details, I say so. When I’m guessing, I say that too. There is enough confident-sounding writing on the internet already.
 
-- Markdown files I can grep, diff, and revert  
-- My own domain and analytics story  
-- No surprise paywalls in front of friends who click a link  
+## Why I write under my own name
 
-If the automation ever breaks, I still own the content. That matters more than I expected.
+It would be easier to write anonymously. Some of these posts describe mistakes that happened on real projects, and I edit details so I’m not embarrassing former colleagues or breaking confidentiality. But I sign every post for two reasons.
 
-## What you’ll see here
+First, accountability. If I claim a query is fast, I should be reachable when it isn’t. The comments and contact form aren’t decoration.
 
-Expect messy, useful stuff: automation, backend bits, things I broke in production, and the occasional rant. Some posts will be polished; some will read like I wrote them on the train — because I probably did.
+Second, voice matters. Anonymous engineering writing tends to drift toward a generic "we" that no real engineer talks in. I’d rather sound like a person — including the bits where I’m wrong — than sound like a brand.
 
-I’m not trying to win a literary prize. I’m trying to **finish thoughts** in public. If a post feels half-baked, check the date — it might literally be v1 from a phone message I decided not to over-edit.
+## On tools
 
-## One thing I’d tell my past self
+I write posts in Markdown, edit them in a normal text editor, and push the repo to GitHub. The site is built with Astro, styled with Tailwind, and deployed on Vercel. There’s nothing exotic in the stack and no automated pipeline writing posts for me. I use modern editing tools — including AI assistants for outlining, proofreading, and the occasional rephrase — exactly the way I use a spellchecker. Every story, claim, and code sample is mine and gets reviewed before publishing.
 
-Ship the pipeline *before* you “just write manually until the tool is perfect.” Perfect never arrives; **embarrassing v1** at least trains your prompts.
+## What I’m hoping for
 
-Curious about the person behind the keyboard? **[About](/about)** has the longer version.
+The honest hope is that one of these posts saves a stranger an afternoon. That’s the bar. If I write something that helps someone avoid the migration mistake I made, or pick cursor pagination before they need it, or set up structured logs before their next outage — that’s the win. Pageviews are a nice signal; "this saved me time" emails are the actual product.
+
+## How to read this site
+
+Most posts stand alone. There’s no reading order. If you’re new here, a few starting points:
+
+- Have a Postgres migration coming up? Read the one about adding a column on a Friday.
+- About to design a public API? Read the API mistakes post.
+- New job, unfamiliar repo? Read the "how I read a codebase" piece.
+
+If you find an error, or you’ve solved one of these problems differently and want to push back, the [contact page](/contact) is open. Disagreement is welcome — pretending the first solution that works is the only one isn’t how anyone gets better.
+
+That’s the manifesto. Onward to the specific stuff.

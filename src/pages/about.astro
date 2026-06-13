@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="About"
-  description="Learn about this blog and the person behind it."
+  description="About Haseeb Ahmad — a full-stack engineer writing about backends, databases, deployment, and the everyday craft of building software."
 >
   <section class="max-w-3xl mx-auto px-6 py-12">
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-surface-900 dark:text-white mb-8">
@@ -13,44 +13,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="prose text-surface-700 dark:text-surface-300">
       <p>
-        Welcome to <strong>Haseeb Studio Blogs</strong> — a tech-focused blog where I share practical knowledge,
-        tutorials, and insights from real-world development experience.
+        Hi — I’m <strong>Haseeb Ahmad</strong>, a full-stack engineer based in Europe. I’ve spent
+        the last several years building backends, APIs, and developer tooling for small teams and
+        early-stage products. This blog is where I write down the things I wish I had read earlier,
+        usually a week after I broke something in production.
       </p>
 
+      <h2>What I work on</h2>
       <p>
-        I'm <strong>Haseeb Ahmad</strong>, a full-stack developer with 7+ years of experience building
-        scalable web applications using modern technologies like Python, JavaScript/TypeScript,
-        React, Vue, and cloud platforms.
+        Day to day, I work across the stack — most often Python, TypeScript/Node, and Postgres,
+        deployed on platforms like Vercel, Fly.io, and AWS. I’ve shipped REST and GraphQL APIs,
+        background job systems, ETL pipelines, internal admin tools, and the occasional frontend
+        with React, Vue, or Astro. Nothing here is academic: it’s the stack I’d actually pick on a
+        Monday.
       </p>
 
-      <h2>The Tech Stack</h2>
+      <h2>Why this blog exists</h2>
+      <p>
+        Most engineering posts online are either marketing in disguise or written by people who
+        only ship to localhost. I wanted somewhere to write the boring, specific things — the
+        Postgres lock that took down a Friday deploy, the API decision I regretted six months
+        later, the migration we ran in three batches instead of one because we’d learned our
+        lesson.
+      </p>
+      <p>
+        Every post here is written from real experience. When I quote a number, a query, or an
+        error message, it’s because I actually saw it. When I’m unsure, I say so.
+      </p>
+
+      <h2>What you’ll find here</h2>
       <ul>
-        <li><strong>Astro</strong> — A fast, modern static site generator built for content</li>
-        <li><strong>Tailwind CSS</strong> — Utility-first CSS for clean, responsive design</li>
-        <li><strong>Vercel</strong> — Hosting and automatic deployments</li>
-        <li><strong>n8n</strong> — Open-source workflow automation</li>
+        <li><strong>Backend &amp; databases</strong> — Postgres, schema design, migrations, query plans.</li>
+        <li><strong>Devops &amp; deployment</strong> — CI/CD, env vars, redirects, the boring checklist that prevents 3 a.m. pages.</li>
+        <li><strong>API design</strong> — versioning, pagination, error shapes, idempotency.</li>
+        <li><strong>Workflow</strong> — Git habits, code review, reading unfamiliar codebases.</li>
+        <li><strong>Engineering as a job</strong> — hiring, take-homes, learning out loud.</li>
       </ul>
-
-      <h2>Purpose</h2>
       <p>
-        This blog is created to help developers, students, and tech enthusiasts learn faster and build better.
-        Here you'll find:
+        I keep posts short enough to read on a coffee break but long enough to actually teach
+        something. If a piece feels useful, the highest compliment is sending it to a colleague
+        who would also benefit.
       </p>
 
-      <ul>
-        <li>Step-by-step coding tutorials</li>
-        <li>Backend & frontend development guides</li>
-        <li>Cloud & deployment strategies</li>
-        <li>Real-world problem-solving approaches</li>
-      </ul>
-
+      <h2>How I write</h2>
       <p>
-        Whether you're just starting out or already experienced, the goal is to provide clear,
-        actionable, and practical content.
+        I draft most posts on a laptop in the evenings, often after running into the problem I’m
+        writing about. I edit them the next day, when I can tell whether a sentence is honest or
+        just sounds good. I use modern editing tools (including AI for outlining and proofreading)
+        the same way I use a spellchecker — to ship faster — but every claim, story, and code
+        sample is my own and reviewed by me before publishing.
       </p>
 
+      <h2>About the site</h2>
       <p>
-        If you’d like to connect or collaborate, feel free to reach out via the contact page.
+        This blog is built with <strong>Astro</strong> and <strong>Tailwind CSS</strong>,
+        deployed on <strong>Vercel</strong>. Posts are written in Markdown, version-controlled in
+        Git, and served as static HTML. No tracking beyond standard hosting logs and the cookies
+        used by Google AdSense as described in the
+        <a href="/privacy">Privacy Policy</a>.
+      </p>
+
+      <h2>Get in touch</h2>
+      <p>
+        If a post helped you, broke for you, or got something wrong, I genuinely want to hear
+        about it. The fastest way is the <a href="/contact">contact page</a>. For legal
+        information, see the <a href="/impressum">Impressum</a>.
       </p>
     </div>
   </section>
