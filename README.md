@@ -8,15 +8,7 @@
 ![GitHub](https://img.shields.io/badge/GitHub-Code-C4A341?style=for-the-badge&logo=github&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployment-6241C4?style=for-the-badge&logo=vercel&logoColor=white)
 
-A personal blog powered by Astro, deployed on Vercel, with an automated pipeline that turns a WhatsApp message into a published blog post using AI.
-
-## Architecture
-
-```
-WhatsApp Message → n8n Automation → OpenAI API → GitHub Commit → Vercel Deploy → Blog Live
-```
-
-**Flow**: Send a WhatsApp message with a topic and instructions. n8n receives it, sends it to OpenAI to generate a Markdown blog post, commits the file to this GitHub repo, and Vercel auto-rebuilds the site. New posts go live in ~60 seconds.
+A personal blog powered by Astro and Tailwind CSS, deployed on Vercel. Posts are written in Markdown, version-controlled in Git, and served as static HTML.
 
 ## Quick Start (Blog Website)
 
